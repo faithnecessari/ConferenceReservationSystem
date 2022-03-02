@@ -28,4 +28,5 @@ urlpatterns = [
     path('about', views.MyAboutView.as_view(),name="my_about_view"),
     path('LogIn', views.MyLogInView.as_view(),name="my_LogIn_view"),
     path('adminLogIn', views.MyadminLogInView.as_view(),name="my_adminLogIn_view"),
+    path('adminDashboard', views.MyadminDashboardView.as_view(),name="my_adminDashboard_view"),
 ]
