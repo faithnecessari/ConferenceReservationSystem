@@ -39,6 +39,31 @@ class MyadminLogInView(View):
 	def get(self, request):
 		return render(request,'adminLogIn.html', {})
 
+class MycustomerRegistrationView(View):
+    def get(self, request):
+
+        return render(request,'customerRegistration.html') 
+
+    def post(self, request):
+        form = CustomerForm(request.POST)
+
+        if form.is_valid():
+            firstname = request.POST.get("firstname")         
+            lastname = request.POST.get("lastname")
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            address = request.POST.get("address")
+            contactnum = request.POST.get("contactnum")
+            
+            form = Customer( firstname=firstname, lastname = lastname, username =username,password = password, address = address, contactnum = contactnum)
+            form.save()
+
+            return redirect('my_customerRegistration_view')
+        
+        else:
+            print(form.errors)
+        return HttpResponse('not valid')
+
 class MyaddRoomView(View):
     def get(self, request):
 
@@ -94,4 +119,41 @@ class MyadminDashboardView(View):
                 print('recorded deleted')
                 #return HttpResponse ('post')
                 return redirect('my_adminDashboard_view')
+
+class MydashboardCustomerView(View):
+    def get(self, request):
+        customers = Customer.objects.all()
+        context = {
+            'customers': customers
+        }
+
+        return render(request,'dashboardCustomer.html',context)
+
+    def post(self, request):
+        
+        if request.method == 'POST':
+            
+            if 'btnUpdate' in request.POST: 
+                print('update profile button clicked')
+                id = request.POST.get("id")
+                firstname = request.POST.get("firstname")
+                lastname = request.POST.get("lastname")
+                username = request.POST.get("username")
+                password = request.POST.get("password")
+                address = request.POST.get("address")
+                contactnum = request.POST.get("contactnum")
+             
+                
+                update_customer = Customer.objects.filter(id = id).update(id = id, firstname = firstname, lastname = lastname, username = username, password = password, address = address, contactnum = contactnum)
+                print(update_customer)
+                print('profile updated')
+                return redirect('my_dashboardCustomer_view')
+            elif 'btnDelete' in request.POST:
+                print('delete button clicked')
+                id = request.POST.get("id")
+                customerdel = Customer.objects.filter(id=id).delete()
+                # pers = Person.objects.filter(id = sid).delete()
+                print('recorded deleted')
+                #return HttpResponse ('post')
+                return redirect('my_dashboardCustomer_view')
             
