@@ -55,7 +55,7 @@ class MyaddRoomView(View):
             form = Rooms( roomtype=roomtype, timeslot = timeslot, price =price)
             form.save()
 
-            return redirect('my_addRoom_view')
+            return redirect('my_adminDashboard_view')
         
         else:
             print(form.errors)
