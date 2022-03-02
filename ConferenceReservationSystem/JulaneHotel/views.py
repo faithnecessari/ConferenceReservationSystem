@@ -39,9 +39,27 @@ class MyadminLogInView(View):
 	def get(self, request):
 		return render(request,'adminLogIn.html', {})
 
-#class MyadminDashboardView(View):
-#	def get(self, request):
-#		return render(request,'adminDashboard.html', {})
+class MyaddRoomView(View):
+    def get(self, request):
+
+        return render(request,'addRoom.html') 
+
+    def post(self, request):
+        form = RoomsForm(request.POST)
+
+        if form.is_valid():
+            roomtype = request.POST.get("roomtype")         
+            timeslot = request.POST.get("timeslot")
+            price = request.POST.get("price")
+            
+            form = Rooms( roomtype=roomtype, timeslot = timeslot, price =price)
+            form.save()
+
+            return redirect('my_addRoom_view')
+        
+        else:
+            print(form.errors)
+        return HttpResponse('not valid')
 
 class MyadminDashboardView(View):
     def get(self, request):
