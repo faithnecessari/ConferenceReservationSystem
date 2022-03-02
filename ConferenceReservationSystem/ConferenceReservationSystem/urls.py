@@ -30,4 +30,6 @@ urlpatterns = [
     path('adminLogIn', views.MyadminLogInView.as_view(),name="my_adminLogIn_view"),
     path('adminDashboard', views.MyadminDashboardView.as_view(),name="my_adminDashboard_view"),
     path('addRoom', views.MyaddRoomView.as_view(),name="my_addRoom_view"),
+    path('customerRegistration', views.MycustomerRegistrationView.as_view(),name="my_customerRegistration_view"),
+    path('dashboardCustomer', views.MydashboardCustomerView.as_view(),name="my_dashboardCustomer_view"),
 ]
