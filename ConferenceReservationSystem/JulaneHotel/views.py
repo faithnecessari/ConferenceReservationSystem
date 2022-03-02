@@ -29,3 +29,7 @@ class MyLogInView(View):
 class MyadminLogInView(View):
 	def get(self, request):
 		return render(request,'adminLogIn.html', {})
+
+class MyadminDashboardView(View):
+	def get(self, request):
+		return render(request,'adminDashboard.html', {})
