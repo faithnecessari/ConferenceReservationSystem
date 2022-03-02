@@ -224,12 +224,14 @@
                                      <input type="text" class="form-control" id="id-firstname" placeholder="Firstname" name="student-fname" value ={{student.firstname}}> 
                                     <input type="text" class="form-control" id="BookId" placeholder="BookId" name="BookId" value ={{b.BookId}}>
                                   </div> -->
-                                  <div class = "col-sm-6">
+                                 <div class = "col-sm-6">
                                     <input type="text" class="form-control" id="roomtype" placeholder="roomtype"  name="roomtype" value ={{r.roomtype}}>
                                   </div>
                                   <div class = "col-sm-6">
                                     
-                                    <input type="text" class="form-control" id="timeslot" placeholder="timeslot"  name="timeslot" value ={{r.timeslot}}>
+                                    <input list="timeslot" name="timeslot"></label> <datalist id="timeslot"> <option value="morning"> <option value="afternoon"><option value="evening"></datalist>
+                                         
+                                
                                   </div>
                                 </div>
                                 <br>
