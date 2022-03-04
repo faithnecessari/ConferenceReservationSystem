@@ -92,10 +92,11 @@
                             {%  csrf_token  %}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="roomtype" name="roomtype" placeholder="Enter Room type">
+                                    <input list="roomtype" name="roomtype" placeholder="Choose Room Type" ></label> <datalist id="roomtype"> <option value="A"> <option value="B"><option value="C"><option value="D"></datalist>
                                 </div>
+
                                 <div class="form-group">
-                                    <input type="email" class="form-control" id="timeslot" name="timeslot" placeholder="Enter time slot">
+                                    <input list="timeslot" name="timeslot" placeholder="Choose timeslot"></label> <datalist id="timeslot"> <option value="morning"> <option value="afternoon"><option value="evening"></datalist>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control" id="price" name="price" placeholder="Enter price">
