@@ -181,6 +181,7 @@
                       <tr>
                         <th scope="col" class="text-center">Room ID</th>
                         <th scope="col" class="text-center">Room Type</th>
+                        <th scope="col" class="text-center">Date of Use</th>
                         <th scope="col" class="text-center">Time Slot</th>
                         <th scope="col" class="text-center">Price</th>
                         <th scope="col" class="text-center">Action</th>
@@ -192,6 +193,7 @@
                       <tr class="text-center">
                         <td>{{r.id}}</td>
                         <td>{{r.roomtype}}</td>
+                        <td>{{r.dateofuse}}</td>
                         <td>{{r.timeslot}}</td>
                         <td>{{r.price}}</td>
                         <td class="text-center">
@@ -229,8 +231,12 @@
                                  <div class = "col-sm-6">
                                     <input type="text" class="form-control" id="roomtype" placeholder="roomtype"  name="roomtype" value ={{r.roomtype}}>
                                   </div>
+
                                   <div class = "col-sm-6">
-                                    
+                                    <input type="text" class="form-control" id="dateofuse" placeholder="dateofuse"  name="dateofuse" value ={{r.dateofuse}}>
+                                  </div>
+                                  <div class = "col-sm-6">
+                                    <br>
                                     <input list="timeslot" name="timeslot" placeholder ={{r.timeslot}}></label> <datalist id="timeslot"> <option value="morning"> <option value="afternoon"><option value="evening"></datalist>
                                          
                                 
