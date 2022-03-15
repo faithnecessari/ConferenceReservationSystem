@@ -40,9 +40,9 @@ def login_page(request):
     return render(request, 'authentication/login.html', context={'form': form})
  
 def login(request):
-    con = mysql.connector.connect(host="localhost",user="root",passwd="", database="julanehotel1")
+    con = mysql.connector.connect(host="localhost",user="root",passwd="", database="julanehotel")
     cursor=con.cursor()
-    con2 = mysql.connector.connect(host="localhost",user="root",passwd="", database="julanehotel1")
+    con2 = mysql.connector.connect(host="localhost",user="root",passwd="", database="julanehotel")
     cursor2=con2.cursor()
     sqlcommand="SELECT username from julanehotel_customer"
     sqlcommand2="SELECT password from julanehotel_customer"
@@ -115,9 +115,9 @@ def MyCustomerRegistration(request):
     return render(request,'customerRegistration.html')
 
 def MyadminLogInView(request):
-    con = mysql.connector.connect(host="localhost",user="root",passwd="", database="julanehotel1")
+    con = mysql.connector.connect(host="localhost",user="root",passwd="", database="julanehotel")
     cursor=con.cursor()
-    con2 = mysql.connector.connect(host="localhost",user="root",passwd="", database="julanehotel1")
+    con2 = mysql.connector.connect(host="localhost",user="root",passwd="", database="julanehotel")
     cursor2=con2.cursor()
     sqlcommand="SELECT username from julanehotel_admin"
     sqlcommand2="SELECT password from julanehotel_admin"
