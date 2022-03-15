@@ -4,6 +4,7 @@ from django.db import models
 
 class Rooms(models.Model):
 	roomtype = models.CharField(max_length=20)
+	dateofuse = models.Datefield()
 	timeslot = models.CharField(max_length=20)
 	price = models.IntegerField()
 
