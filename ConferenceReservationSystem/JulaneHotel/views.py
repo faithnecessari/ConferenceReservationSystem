@@ -195,11 +195,12 @@ class MyaddRoomView(View):
         form = RoomsForm(request.POST)
 
         if form.is_valid():
-            roomtype = request.POST.get("roomtype")         
+            roomtype = request.POST.get("roomtype")  
+            dateofuse = request.POST.get("dateofuse")       
             timeslot = request.POST.get("timeslot")
             price = request.POST.get("price")
             
-            form = Rooms( roomtype=roomtype, timeslot = timeslot, price =price)
+            form = Rooms( roomtype=roomtype, dateofuse = dateofuse, timeslot = timeslot, price =price)
             form.save()
 
             return redirect('my_adminDashboard_view')
