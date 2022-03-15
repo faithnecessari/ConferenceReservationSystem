@@ -324,11 +324,12 @@ class MyCustomerReservationView(View):
         form = ReservationForm(request.POST)
 
         if form.is_valid():
+            custID = request.POST.get("custID")
             roomtype = request.POST.get("roomtype")         
             timeslot = request.POST.get("timeslot")
             dateofuse = request.POST.get("dateofuse")
             
-            form = Reservation( roomtype=roomtype, timeslot = timeslot, dateofuse =dateofuse)
+            form = Reservation(roomtype=roomtype, timeslot = timeslot, dateofuse =dateofuse, custID_id= custID)
             form.save()
 
             return redirect('my_customerReservation_view')
