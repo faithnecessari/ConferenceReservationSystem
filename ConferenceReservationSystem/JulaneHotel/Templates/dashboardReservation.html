@@ -180,6 +180,7 @@
                     <thead>
                       <tr>
                         <th scope="col" class="text-center">Reservation ID</th>
+                        <th scope="col" class="text-center">Customer ID</th>
                         <th scope="col" class="text-center">Room Type</th>
                         <th scope="col" class="text-center">Time Slot</th>
                         <th scope="col" class="text-center">Date Of Use</th>
@@ -191,6 +192,7 @@
                       {% for res in reservation %}
                       <tr class="text-center">
                         <td>{{res.id}}</td>
+                        <td>{{res.custID_id}}</td>
                         <td>{{res.roomtype}}</td>
                         <td>{{res.timeslot}}</td>
                         <td>{{res.dateofuse}}</td>
