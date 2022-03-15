@@ -83,20 +83,20 @@
                             
                         </div>
                     </div>
-                    <div class="col-md-9">
-                        <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your username">
+                    <div class="col-md-6">
+                        <form class="customer" method="POST">
+                            {%  csrf_token  %}
+                            <div class="form-group">
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username"></div>
+                            <div class="form-group">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter password">
-                                </div>
-                                <div class="form-group">
+                            <div class="form-group">
                                     <button type="submit" value="submit" class="btn theme_btn button_hover">Log In</button>
                                
                             </div>
-                            <a class="small" href="adminLogIn">LOGIN AS ADMIN</a>
+                            <a class="small" href="adminLogIn">LOGIN AS ADMIN</a><br>
+                            <a class="small" href="customerRegistration">Don't have an account? Sign Up Here!</a>
                             <br><br><br><br><br><br><br></center>
                             <!--<div class="col-md-6">
                                 <div class="form-group">
@@ -113,7 +113,7 @@
     </center>
         <!--================Contact Area =================-->
         
-        <!--================ start footer Area  =================-->	
+        <!--================ start footer Area  =================-->    
         <footer class="footer-area section_gap">
             <div class="container">
                 <div class="row">
@@ -142,20 +142,20 @@
                                         <li><a href="#">Blog</a></li>
                                         <li><a href="#">Contact</a></li>
                                     </ul>
-                                </div>										
-                            </div>							
+                                </div>                                      
+                            </div>                          
                         </div>
-                    </div>							
+                    </div>                          
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-footer-widget">
                             <h6 class="footer_title">Newsletter</h6>
-                            <p>For business professionals caught between high OEM price and mediocre print and graphic output, </p>		
+                            <p>For business professionals caught between high OEM price and mediocre print and graphic output, </p>     
                             <div id="mc_embed_signup">
                                 <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
                                     <div class="input-group d-flex flex-row">
                                         <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                        <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>		
-                                    </div>									
+                                        <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>     
+                                    </div>                                  
                                     <div class="mt-10 info"></div>
                                 </form>
                             </div>
@@ -175,7 +175,7 @@
                                 <li><img src="{% static 'image/instagram/Image-08.jpg' %}" alt=""></li>
                             </ul>
                         </div>
-                    </div>						
+                    </div>                      
                 </div>
                 <div class="border_line"></div>
                 <div class="row footer-bottom d-flex justify-content-between align-items-center">
@@ -191,7 +191,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> <i cl
                 </div>
             </div>
         </footer>
-		<!--================ End footer Area  =================-->
+        <!--================ End footer Area  =================-->
        
        
        <!--================Contact Success and Error message Area =================-->
