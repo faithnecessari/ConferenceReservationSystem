@@ -98,6 +98,9 @@
                         <form class="row contact_form" method="post" novalidate="novalidate">
                             {%  csrf_token  %}
                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <input type="text" class="form-control" id="custID" name="custID" placeholder="Enter Customer ID">
+                                </div>
                                 <div class="form-group">
                                     <input list="roomtype" name="roomtype" placeholder="Choose Room Type" ></label> <datalist id="roomtype"> <option value="A"> <option value="B"><option value="C"><option value="D"></datalist>
                                 </div>
@@ -106,7 +109,7 @@
                                     <input list="timeslot" name="timeslot" placeholder="Choose timeslot"></label> <datalist id="timeslot"> <option value="morning"> <option value="afternoon"><option value="evening"></datalist>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="dateofuse" name="dateofuse" placeholder="Enter Date of Use">
+                                    <input type="date" class="form-control" id="dateofuse" name="dateofuse" placeholder="Enter Date of Use">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" value="submit" class="btn theme_btn button_hover">RESERVE</button>
