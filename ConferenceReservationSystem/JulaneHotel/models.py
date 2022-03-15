@@ -23,6 +23,8 @@ class Customer(models.Model):
 		db_table = 'Customer'
 
 class Reservation(models.Model):
+	custID = models.ForeignKey(Customer, on_delete = models.CASCADE, null=True)
+	#roomID = models.ForeignKey(Rooms, on_delete = models.CASCADE, null=True)
 	dateofuse = models.CharField(max_length=20)
 	timeslot = models.CharField(max_length=20)
 	roomtype = models.CharField(max_length=20)
