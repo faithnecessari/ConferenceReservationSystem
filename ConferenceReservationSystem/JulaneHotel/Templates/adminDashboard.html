@@ -38,7 +38,9 @@
                             <li class="nav-item"><a class="nav-link" href="about">About us</a></li>
                             <li class="nav-item"><a class="nav-link" href="reservation">Reservation</a></li>
                             <li class="nav-item"><a class="nav-link" href="gallery">Gallery</a></li>
-                            <li class="nav-item active"><a class="nav-link" href="adminDashboard">Dashboard</a></li>
+                            <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="index">Log Out</a>
+                </li>
                             <!--<li class="nav-item"><a class="nav-link" href="LogIn">Log In</a></li>-->
                         </ul>
                     </div> 
@@ -117,7 +119,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="dashboardCustomer">
+                      <a class="nav-link" href="dashboardReservation">
                         <span data-feather="users"></span>
                         RESERVATIONS
                       </a>
@@ -291,8 +293,145 @@
 <br><br><br><br><br>
           
         <!--================Contact Area =================-->
+         <h2>Reservations</h2>
+                <div class="table-responsive">
+                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                    
+                    </div>
+                  </div>
+                  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+                    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" style="color:whitesmoke">RESERVATION DETAILS</a>
+                   
+                    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="navbar-nav">
+                      <div class="nav-item text-nowrap">
+                        <a class="nav-link px-3" href="addRoom">ADD RESERVATION</a>
+                      </div>
+                    </div>
+                  </header>
+                    <br>
+                  <table id="example" style="width:100%" class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="text-center">Reservation ID</th>
+                        <th scope="col" class="text-center">Room Type</th>
+                        <th scope="col" class="text-center">Time Slot</th>
+                        <th scope="col" class="text-center">Date Of Use</th>
+                        <th scope="col" class="text-center">Action</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for r in reservation %}
+                      <tr class="text-center">
+                        <td>{{r.id}}</td>
+                        <td>{{r.roomtype}}</td>
+                        <td>{{r.timeslot}}</td>
+                        <td>{{r.dateofuse}}</td>
+                        <td class="text-center">
+                          <a type="button" class="btn btn-success" href="#" data-toggle="modal" data-target="#newModal-{{r.id}}">VIEW</a>
+
+                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal-{{r.id}}">
+                            DELETE
+                          </button>
+                      </td>
+                        
+                      </tr>
+                      <!-- Modal VIEW-->
+                  <div class="modal fade" id="newModal-{{r.id}}" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" style="background-color:#683aa4">
+                          <h5 class="modal-title" style="color:white">ROOM DETAILS</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form id="updateForm" method="post" >
+                        {% csrf_token %}
+                        <div class="modal-body">
+                           <input type="text" name="id" value = {{r.id}} hidden> 
+                          <div class="row">
+                            <div class="col-12" id="startup-tab-1">
+                              <br>
+                                <div class = "row">
+                                  <!-- <div class = "col-sm-4">
+                                   
+                                     <input type="text" class="form-control" id="id-firstname" placeholder="Firstname" name="student-fname" value ={{student.firstname}}> 
+                                    <input type="text" class="form-control" id="BookId" placeholder="BookId" name="BookId" value ={{b.BookId}}>
+                                  </div> -->
+                                 <div class = "col-sm-6">
+                                    <input type="text" class="form-control" id="roomtype" placeholder="roomtype"  name="roomtype" value ={{r.roomtype}}>
+                                  </div>
+                                  <div class = "col-sm-6">
+                                    
+                                    <input list="timeslot" name="timeslot" placeholder ={{r.timeslot}}></label> <datalist id="timeslot"> <option value="morning"> <option value="afternoon"><option value="evening"></datalist>
+                                         
+                                
+                                  </div>
+                                </div>
+                                <br>
+                                <div class = "row">
+                                <div class = "col-sm-6">
+                                  <input type="text" class="form-control" id="dateofuse" placeholder="dateofuse"  name="dateofuse" value ={{r.dateofuse}}>
+                                </div>
+                                <!--<div class = "col-sm-6">
+                                  <input type="text" class="form-control" id="Password" placeholder="Password"  name="Password" value ={{a.Password}}>
+                                </div>-->
+                              </div>
+                             
+                            
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">  
+                            <button type="submit" id = "btnUpdate" name = "btnUpdate" class="button">UPDATE</button>                                  
+                            <button type="button" class="button btn-secondary" data-dismiss="modal">CLOSE</button>                          
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+
+                  <!-- Modal DELETE-->
+                  <div class="modal fade" id="exampleModal-{{r.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" style="background-color:#683aa4">
+                          <h5 class="modal-title" id="exampleModalLabel" style="color:white">DELETE RECORD</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form id="deleteForm" method="post" >
+                        {% csrf_token %} 
+                        <div class="modal-body">                       
+                           <input type="text" name="id" value = {{r.id}} hidden> 
+                          Are you sure you want to delete this record?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                          <button type="submit" id = "btnDelete" name = "btnDelete" class="btn btn-primary">YES</button>
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </main>
+            </div>
+          </div>
+<br><br><br><br><br>
         
-        <!--================ start footer Area  =================-->	
+        <!--================ start footer Area  =================-->  
         <footer class="footer-area section_gap">
             <div class="container">
                 <div class="row">
@@ -321,20 +460,20 @@
                                         <li><a href="#">Blog</a></li>
                                         <li><a href="#">Contact</a></li>
                                     </ul>
-                                </div>										
-                            </div>							
+                                </div>                    
+                            </div>              
                         </div>
-                    </div>							
+                    </div>              
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-footer-widget">
                             <h6 class="footer_title">Newsletter</h6>
-                            <p>For business professionals caught between high OEM price and mediocre print and graphic output, </p>		
+                            <p>For business professionals caught between high OEM price and mediocre print and graphic output, </p>   
                             <div id="mc_embed_signup">
                                 <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
                                     <div class="input-group d-flex flex-row">
                                         <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                        <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>		
-                                    </div>									
+                                        <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>   
+                                    </div>                  
                                     <div class="mt-10 info"></div>
                                 </form>
                             </div>
@@ -354,7 +493,7 @@
                                 <li><img src="{% static 'image/instagram/Image-08.jpg' %}" alt=""></li>
                             </ul>
                         </div>
-                    </div>						
+                    </div>            
                 </div>
                 <div class="border_line"></div>
                 <div class="row footer-bottom d-flex justify-content-between align-items-center">
@@ -370,7 +509,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> <i cl
                 </div>
             </div>
         </footer>
-		<!--================ End footer Area  =================-->
+    <!--================ End footer Area  =================-->
        
        
        <!--================Contact Success and Error message Area =================-->
