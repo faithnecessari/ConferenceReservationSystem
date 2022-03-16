@@ -209,39 +209,7 @@ class MyaddRoomView(View):
             print(form.errors)
         return HttpResponse('not valid')
 
-class MyadminDashboardView(View):
-    def get(self, request):
-        rooms = Rooms.objects.all()
-        context = {
-            'rooms': rooms
-        }
 
-        return render(request,'adminDashboard.html',context)
-
-    def post(self, request):
-        
-        if request.method == 'POST':
-            
-            if 'btnUpdate' in request.POST: 
-                print('update profile button clicked')
-                id = request.POST.get("id")
-                roomtype = request.POST.get("roomtype")
-                timeslot = request.POST.get("timeslot")
-                price = request.POST.get("price")
-             
-                
-                update_room = Rooms.objects.filter(id = id).update(id = id, roomtype = roomtype, timeslot = timeslot, price = price)
-                print(update_room)
-                print('profile updated')
-                return redirect('my_adminDashboard_view')
-            elif 'btnDelete' in request.POST:
-                print('delete button clicked')
-                id = request.POST.get("id")
-                bookdel = Rooms.objects.filter(id=id).delete()
-                # pers = Person.objects.filter(id = sid).delete()
-                print('recorded deleted')
-                #return HttpResponse ('post')
-                return redirect('my_adminDashboard_view')
 
 class MydashboardCustomerView(View):
     def get(self, request):
@@ -317,6 +285,10 @@ class MydashboardReservationView(View):
 
 class MyCustomerReservationView(View):
     def get(self, request):
+        rooms =Rooms.objects.all()
+        context = {
+           'rooms': rooms
+        }
 
         return render(request,'customerReservation.html') 
 
@@ -325,11 +297,13 @@ class MyCustomerReservationView(View):
 
         if form.is_valid():
             custID = request.POST.get("custID")
-            roomtype = request.POST.get("roomtype")         
-            timeslot = request.POST.get("timeslot")
-            dateofuse = request.POST.get("dateofuse")
+            roomID = request.POST.get("roomID")
+            #roomtype = request.POST.get("roomtype")         
+            #timeslot = request.POST.get("timeslot")
+            #dateofuse = request.POST.get("dateofuse")
             
-            form = Reservation(roomtype=roomtype, timeslot = timeslot, dateofuse =dateofuse, custID_id= custID)
+            #form = Reservation(roomtype=roomtype, timeslot = timeslot, dateofuse =dateofuse, custID_id= custID)
+            form = Reservation(custID_id= custID, roomID_id = roomID)
             form.save()
 
             return redirect('my_customerReservation_view')
@@ -337,6 +311,42 @@ class MyCustomerReservationView(View):
         else:
             print(form.errors)
         return HttpResponse('not valid')
+
+
+class MyadminDashboardView(View):
+    def get(self, request):
+        rooms = Rooms.objects.all()
+        context = {
+           'rooms': rooms
+        }
+
+        return render(request,'adminDashboard.html',context)
+
+    def post(self, request):
+        
+        if request.method == 'POST':
+            
+            if 'btnUpdate' in request.POST: 
+                print('update profile button clicked')
+                id = request.POST.get("id")
+                roomtype = request.POST.get("roomtype")
+                timeslot = request.POST.get("timeslot")
+                price = request.POST.get("price")
+                status = request.POST.get("status")
+             
+                
+                update_room = Rooms.objects.filter(id = id).update(id = id, roomtype = roomtype, timeslot = timeslot, price = price, status = status)
+                print(update_room)
+                print('profile updated')
+                return redirect('my_adminDashboard_view')
+            elif 'btnDelete' in request.POST:
+                print('delete button clicked')
+                id = request.POST.get("id")
+                bookdel = Rooms.objects.filter(id=id).delete()
+                # pers = Person.objects.filter(id = sid).delete()
+                print('recorded deleted')
+                #return HttpResponse ('post')
+                return redirect('my_adminDashboard_view')
 
 class MyCustomerDashboardView(View):
     def get(self, request):
@@ -355,19 +365,19 @@ class MyCustomerDashboardView(View):
             if 'btnUpdate' in request.POST: 
                 print('update profile button clicked')
                 id = request.POST.get("id")
-                roomtype = request.POST.get("roomtype")
-                timeslot = request.POST.get("timeslot")
-                dateofuse = request.POST.get("dateofuse")
+                custID = request.POST.get("custID")
+                roomID = request.POST.get("roomID")
+               
              
                 
-                update_reservation = Reservation.objects.filter(id = id).update(id = id, roomtype = roomtype, timeslot = timeslot, dateofuse = dateofuse)
+                update_reservation = Reservation.objects.filter(id = id).update(id = id, custID_id = custID, roomID_id = roomID)
                 print(update_reservation)
                 print('profile updated')
                 return redirect('my_customerDashboard_view')
             elif 'btnDelete' in request.POST:
                 print('delete button clicked')
                 id = request.POST.get("id")
-                bookdel = Reservation.objects.filter(id=id).delete()
+                resdel = Reservation.objects.filter(id=id).delete()
                 # pers = Person.objects.filter(id = sid).delete()
                 print('recorded deleted')
                 #return HttpResponse ('post')
@@ -411,3 +421,13 @@ class MyCustomerProfileView(View):
                 messages.info(request,"Successfully Deleted!")
                 #return HttpResponse ('post')
                 return redirect('my_customerProfile_view')
+
+
+def searchRoom(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        rooms = Rooms.objects.filter(dateofuse__contains=searched)
+        return render(request, 'searchRoom.html',{'searched': searched, 'rooms':rooms})
+
+    else:
+        return render(request, 'searchRoom.html',{})
