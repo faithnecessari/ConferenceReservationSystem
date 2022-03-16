@@ -69,6 +69,21 @@
         </section>
         <!--================Breadcrumb Area =================-->
         
+<!--================Search Bar =================-->
+
+         <!--   <form class = "d-flex" method="POST" action="{% url 'my_searchRoom_view' %}">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search" arial-label = "Search">
+                <button class="btn btn-outline-secondary" type="submit">
+                    Search
+                </button>
+                
+
+
+            </form>
+-->
+
+
         <!--================Contact Area =================-->
         <br><br><br><br>
        <center>
@@ -79,17 +94,18 @@
                         <div class="contact_info">
                             <div class="info_item">
                                 <!--<i class="lnr lnr-home"></i>-->
-                                <h6>Room type</h6>
+                                <h6>Customer ID</h6>
                                 <p></p>
-                            </div>
+                            </div><!--
                             <div class="info_item">
-                               <!--<i class="lnr lnr-phone-handset"></i>-->
+                               <i class="lnr lnr-phone-handset"></i>
                                 <h6>Time Slot</h6>
                                 <p></p>
-                            </div>
+                            </div>-->
                             <div class="info_item">
                                <!--<i class="lnr lnr-phone-handset"></i>-->
-                                <h6>Date Of Use</h6>
+                                <!--<h6>Date Of Use</h6>-->
+                                <h6>Room ID</h6>
                                 <p></p>
                             </div>
                         </div>
@@ -101,21 +117,24 @@
                                  <div class="form-group">
                                     <input type="text" class="form-control" id="custID" name="custID" placeholder="Enter Customer ID">
                                 </div>
-                                <div class="form-group">
+                                <!--<div class="form-group">
                                     <input list="roomtype" name="roomtype" placeholder="Choose Room Type" ></label> <datalist id="roomtype"> <option value="A"> <option value="B"><option value="C"><option value="D"></datalist>
                                 </div>
 
                                 <div class="form-group">
                                     <input list="timeslot" name="timeslot" placeholder="Choose timeslot"></label> <datalist id="timeslot"> <option value="morning"> <option value="afternoon"><option value="evening"></datalist>
-                                </div>
+                                </div>-->
                                 <div class="form-group">
-                                    <input type="date" class="form-control" id="dateofuse" name="dateofuse" placeholder="Enter Date of Use">
+                                    <input type="text" class="form-control" id="roomID" name="roomID" placeholder="Enter Room ID">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" value="submit" class="btn theme_btn button_hover">RESERVE</button>
                                
                             </div>
-                            
+                            <div class="form-group">
+                                   <a class="nav-link px-3" href="searchRoom">Search Rooms</a>
+                               
+                            </div>
                             <br><br><br><br><br><br><br></center>
                             <!--<div class="col-md-6">
                                 <div class="form-group">
@@ -130,6 +149,68 @@
                 </div>
             </div>
     </center>
+
+
+
+          
+             
+          
+          
+                <!--<h2>Rooms</h2>
+                <div class="table-responsive">
+                  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                    
+                    </div>
+                  </div>
+                  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+                    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" style="color:whitesmoke">ROOM DETAILS</a>
+                   
+                    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="navbar-nav">
+                      <div class="nav-item text-nowrap">
+                        <a class="nav-link px-3" href="addRoom">ADD ROOM</a>
+                      </div>
+                    </div>
+                  </header>
+                    <br>
+                  <table id="example" style="width:100%" class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="text-center">Room ID</th>
+                        <th scope="col" class="text-center">Room Type</th>
+                        <th scope="col" class="text-center">Date of Use</th>
+                        <th scope="col" class="text-center">Time Slot</th>
+                        <th scope="col" class="text-center">Price</th>
+                        <th scope="col" class="text-center">Status</th>
+                        th scope="col" class="text-center">Action</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for r in rooms %}
+                      <tr class="text-center">
+                        <td>{{r.id}}</td>
+                        <td>{{r.roomtype}}</td>
+                        <td>{{r.dateofuse}}</td>
+                        <td>{{r.timeslot}}</td>
+                        <td>{{r.price}}</td>
+                        <td>{{r.status}}</td>
+            
+                        
+                      </tr>
+                     
+                  {% endfor %}
+                     </tbody>
+                  </table>
+                </div>
+              </main>
+            </div>
+          </div>-->
         <!--================Contact Area =================-->
         
         <!--================ start footer Area  =================-->	
