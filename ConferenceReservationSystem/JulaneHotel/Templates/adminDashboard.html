@@ -83,7 +83,7 @@
          </div>
          
        </nav>
-          <!--end of navbar-->
+          
 
           <div class="container-fluid">
             <div class="row">
@@ -184,6 +184,7 @@
                         <th scope="col" class="text-center">Date of Use</th>
                         <th scope="col" class="text-center">Time Slot</th>
                         <th scope="col" class="text-center">Price</th>
+                        <th scope="col" class="text-center">Status</th>
                         <th scope="col" class="text-center">Action</th>
                         
                       </tr>
@@ -196,6 +197,7 @@
                         <td>{{r.dateofuse}}</td>
                         <td>{{r.timeslot}}</td>
                         <td>{{r.price}}</td>
+                        <td>{{r.status}}</td>
                         <td class="text-center">
                           <a type="button" class="btn btn-success" href="#" data-toggle="modal" data-target="#newModal-{{r.id}}">VIEW</a>
 
@@ -237,7 +239,7 @@
                                   </div>
                                   <div class = "col-sm-6">
                                     <br>
-                                    <input list="timeslot" name="timeslot" placeholder ={{r.timeslot}}></label> <datalist id="timeslot"> <option value="morning"> <option value="afternoon"><option value="evening"></datalist>
+                                    <input list="timeslot" name="timeslot" value={{r.timeslot}} placeholder="{{r.timeslot}}" hidden></label> <datalist id="timeslot"> <option value="morning"> <option value="afternoon"><option value="evening"></datalist>
                                          
                                 
                                   </div>
@@ -247,9 +249,9 @@
                                 <div class = "col-sm-6">
                                   <input type="text" class="form-control" id="price" placeholder="price"  name="price" value ={{r.price}}>
                                 </div>
-                                <!--<div class = "col-sm-6">
-                                  <input type="text" class="form-control" id="Password" placeholder="Password"  name="Password" value ={{a.Password}}>
-                                </div>-->
+                                <div class = "col-sm-6">
+                                  <input list="status" name="status"></label><datalist id="status"> <option value="available"> <option value="reserved"></datalist>
+                                </div>
                               </div>
                              
                             
@@ -299,7 +301,7 @@
 <br><br><br><br><br>
           
         <!--================Contact Area =================-->
-         <h2>Reservations</h2>
+        <!-- <h2>Reservations</h2>
                 <div class="table-responsive">
                   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     
@@ -347,7 +349,7 @@
                           </button>
                       </td>
                         
-                      </tr>
+                      </tr>-->
                       <!-- Modal VIEW-->
                   <div class="modal fade" id="newModal-{{r.id}}" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
