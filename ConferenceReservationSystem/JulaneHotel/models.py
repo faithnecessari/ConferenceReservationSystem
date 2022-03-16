@@ -7,6 +7,7 @@ class Rooms(models.Model):
 	dateofuse = models.CharField(max_length=20, default='SOME STRING')
 	timeslot = models.CharField(max_length=20)
 	price = models.IntegerField()
+	status = models.CharField(max_length=20, default='available')
 
 	class meta:
 		db_table = 'Rooms'
@@ -24,10 +25,10 @@ class Customer(models.Model):
 
 class Reservation(models.Model):
 	custID = models.ForeignKey(Customer, on_delete = models.CASCADE, null=True)
-	#roomID = models.ForeignKey(Rooms, on_delete = models.CASCADE, null=True)
-	dateofuse = models.CharField(max_length=20)
-	timeslot = models.CharField(max_length=20)
-	roomtype = models.CharField(max_length=20)
+	roomID = models.ForeignKey(Rooms, on_delete = models.CASCADE, null=True)
+	#dateofuse = models.CharField(max_length=20)
+	#timeslot = models.CharField(max_length=20)
+	#roomtype = models.CharField(max_length=20)
 	
 
 	class meta:
