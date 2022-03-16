@@ -154,7 +154,7 @@
                     
                     <div class="navbar-nav">
                       <div class="nav-item text-nowrap">
-                        <a class="nav-link px-3" href="addRoom">ADD RESERVATION</a>
+                        <a class="nav-link px-3" href="customerReservation">ADD RESERVATION</a>
                       </div>
                     </div>
                   </header>
@@ -163,9 +163,9 @@
                     <thead>
                       <tr>
                         <th scope="col" class="text-center">Reservation ID</th>
-                        <th scope="col" class="text-center">Room Type</th>
-                        <th scope="col" class="text-center">Time Slot</th>
-                        <th scope="col" class="text-center">Date Of Use</th>
+                        <th scope="col" class="text-center">Customer ID</th>
+                        <th scope="col" class="text-center">Room ID</th>
+                        <!--<th scope="col" class="text-center">Date Of Use</th>-->
                         <th scope="col" class="text-center">Action</th>
                         
                       </tr>
@@ -174,9 +174,9 @@
                       {% for r in reservation %}
                       <tr class="text-center">
                         <td>{{r.id}}</td>
-                        <td>{{r.roomtype}}</td>
-                        <td>{{r.timeslot}}</td>
-                        <td>{{r.dateofuse}}</td>
+                        <td>{{r.custID_id}}</td>
+                        <td>{{r.roomID_id}}</td>
+                        <!--<td>{{r.dateofuse}}</td>-->
                         <td class="text-center">
                           <a type="button" class="btn btn-success" href="#" data-toggle="modal" data-target="#newModal-{{r.id}}">VIEW</a>
 
@@ -210,19 +210,19 @@
                                     <input type="text" class="form-control" id="BookId" placeholder="BookId" name="BookId" value ={{b.BookId}}>
                                   </div> -->
                                  <div class = "col-sm-6">
-                                    <input type="text" class="form-control" id="roomtype" placeholder="roomtype"  name="roomtype" value ={{r.roomtype}}>
+                                    <input type="text" class="form-control" id="custID" placeholder="custID"  name="custID" value ={{r.custID_id}}>
                                   </div>
-                                  <div class = "col-sm-6">
+                                 <!-- <div class = "col-sm-6">
                                     
                                     <input list="timeslot" name="timeslot" placeholder ={{r.timeslot}}></label> <datalist id="timeslot"> <option value="morning"> <option value="afternoon"><option value="evening"></datalist>
                                          
                                 
                                   </div>
-                                </div>
+                                </div>-->
                                 <br>
                                 <div class = "row">
                                 <div class = "col-sm-6">
-                                  <input type="text" class="form-control" id="dateofuse" placeholder="dateofuse"  name="dateofuse" value ={{r.dateofuse}}>
+                                  <input type="text" class="form-control" id="roomID" placeholder="roomID"  name="roomID" value ={{r.roomID_id}}>
                                 </div>
                                 <!--<div class = "col-sm-6">
                                   <input type="text" class="form-control" id="Password" placeholder="Password"  name="Password" value ={{a.Password}}>
@@ -241,7 +241,7 @@
                     </form>
                     </div>
                   </div>
-
+                   </div>
                   <!-- Modal DELETE-->
                   <div class="modal fade" id="exampleModal-{{r.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
