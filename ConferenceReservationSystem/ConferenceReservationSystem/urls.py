@@ -36,4 +36,5 @@ urlpatterns = [
     path('customerReservation', views.MyCustomerReservationView.as_view(),name="my_customerReservation_view"),
     path('customerDashboard', views.MyCustomerDashboardView.as_view(),name="my_customerDashboard_view"),
     path('customerProfile', views.MyCustomerProfileView.as_view(),name="my_customerProfile_view"),
+    path('searchRoom', views.searchRoom,name="my_searchRoom_view"),
 ]
