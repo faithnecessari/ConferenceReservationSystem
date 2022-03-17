@@ -265,12 +265,12 @@ class MydashboardReservationView(View):
             if 'btnUpdate' in request.POST: 
                 print('update profile button clicked')
                 id = request.POST.get("id")
-                roomtype = request.POST.get("roomtype")
-                timeslot = request.POST.get("timeslot")
-                dateofuse = request.POST.get("dateofuse")
+                custID = request.POST.get("custID")
+                roomID = request.POST.get("roomID")
+                #dateofuse = request.POST.get("dateofuse")
              
                 
-                update_reservation = Reservation.objects.filter(id = id).update(id = id, roomtype = roomtype, timeslot = timeslot, dateofuse = dateofuse)
+                update_reservation = Reservation.objects.filter(id = id).update(id = id, custID_id = custID, roomID_id = roomID)
                 print(update_reservation)
                 print('profile updated')
                 return redirect('my_dashboardReservation_view')
@@ -315,9 +315,12 @@ class MyCustomerReservationView(View):
 
 class MyadminDashboardView(View):
     def get(self, request):
-        rooms = Rooms.objects.all()
+        roomsc = Rooms.objects.all()
+        rooms = Rooms.objects.all().count()
+        reservation = Reservation.objects.all().count()
+        customer = Customer.objects.all().count()
         context = {
-           'rooms': rooms
+           'rooms': rooms, 'reservation' : reservation, 'customer': customer, 'roomsc': roomsc
         }
 
         return render(request,'adminDashboard.html',context)
